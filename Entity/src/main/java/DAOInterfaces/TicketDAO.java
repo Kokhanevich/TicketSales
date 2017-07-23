@@ -2,7 +2,7 @@ package DAOInterfaces;
 
 import Entities.Passengers;
 import Entities.Ticket;
-import Entities.Wagon;
+import Entities.Plane;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -15,7 +15,7 @@ public interface TicketDAO {
     public void update(Ticket ticket) throws SQLException;
     public Ticket getTicketById(Long id) throws SQLException;
     public List<Ticket> getTicketsByPassenger(Passengers passenger) throws SQLException;
-    public List<Ticket> getTicketsByWagon(Wagon wagon) throws SQLException;
+    public List<Ticket> getTicketsByWagon(Plane wagon) throws SQLException;
     public List<Ticket> getAllTickets() throws SQLException;
     public void deleteTicket(Ticket ticket) throws SQLException;
 

@@ -18,18 +18,16 @@ public class Tariff {
 
     @ManyToOne()
     @JoinColumn(name = "from_station")
-    private Stations fromStation;
+    private Airports fromAirport;
 
     @ManyToOne
     @JoinColumn(name = "to_station")
-    private Stations toStation;
+    private Airports toAirport;
 
     @Column(name = "Prise")
     private Double prise;
 
-    @ManyToOne
-    @JoinColumn(name = "type_ID")
-    private TypeWagons typeWagon;
+
 
     @OneToMany(mappedBy = "tariff")
     private List<Ticket> ticketList=new ArrayList<>();
@@ -44,20 +42,20 @@ public class Tariff {
         this.idTariff = idTariff;
     }
 
-    public Stations getFromStation() {
-        return fromStation;
+    public Airports getFromAirport() {
+        return fromAirport;
     }
 
-    public void setFromStation(Stations fromStation) {
-        this.fromStation = fromStation;
+    public void setFromAirport(Airports fromAirport) {
+        this.fromAirport = fromAirport;
     }
 
-    public Stations getToStation() {
-        return toStation;
+    public Airports getToAirport() {
+        return toAirport;
     }
 
-    public void setToStation(Stations toStation) {
-        this.toStation = toStation;
+    public void setToAirport(Airports toAirport) {
+        this.toAirport = toAirport;
     }
 
     public Double getPrise() {
@@ -66,14 +64,6 @@ public class Tariff {
 
     public void setPrise(Double prise) {
         this.prise = prise;
-    }
-
-    public TypeWagons getTypeWagon() {
-        return typeWagon;
-    }
-
-    public void setTypeWagon(TypeWagons typeWagon) {
-        this.typeWagon = typeWagon;
     }
 
     public List<Ticket> getTicketList() {

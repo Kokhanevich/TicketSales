@@ -3,7 +3,7 @@ package DAOImpl;
 import DAOInterfaces.TicketDAO;
 import Entities.Passengers;
 import Entities.Ticket;
-import Entities.Wagon;
+import Entities.Plane;
 import Factory.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -95,7 +95,7 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     @Override
-    public List<Ticket> getTicketsByWagon(Wagon wagon) throws SQLException {
+    public List<Ticket> getTicketsByWagon(Plane wagon) throws SQLException {
         Session session=null;
         List tickets=new ArrayList<Ticket>();
         try {

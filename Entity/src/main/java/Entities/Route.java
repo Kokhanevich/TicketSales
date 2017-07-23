@@ -17,27 +17,41 @@ public class Route {
     private Long route_ID;
 
     @ManyToOne
-    @JoinColumn(name = "Main_route")
-    private Main_Route mainRoute;
+    @JoinColumn(name = "From_airport")
+    private Airports fromAirport;
 
     @ManyToOne
-    @JoinColumn(name = "Road")
-    private Road road;
+    @JoinColumn(name = "To_airport")
+    private Airports toAirport;
 
-    @Column(name = "Position")
-    private int position;
+   public Route(){}
 
-
-    @OneToMany(mappedBy = "route")
-    private List<Train> trains= new ArrayList<>();
-
-    public Route() {}
-
-    public List<Train> getTrains() {
-        return trains;
+    public Route(Airports fromAirport, Airports toAirport) {
+        this.fromAirport = fromAirport;
+        this.toAirport = toAirport;
     }
 
-    public void setTrains(List<Train> trains) {
-        this.trains = trains;
+    public Long getRoute_ID() {
+        return route_ID;
+    }
+
+    public void setRoute_ID(Long route_ID) {
+        this.route_ID = route_ID;
+    }
+
+    public Airports getFromAirport() {
+        return fromAirport;
+    }
+
+    public void setFromAirport(Airports fromAirport) {
+        this.fromAirport = fromAirport;
+    }
+
+    public Airports getToAirport() {
+        return toAirport;
+    }
+
+    public void setToAirport(Airports toAirport) {
+        this.toAirport = toAirport;
     }
 }

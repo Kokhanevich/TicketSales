@@ -1,14 +1,12 @@
 package DAOImpl;
 
 import DAOInterfaces.SeatsDAO;
+import Entities.Plane;
 import Entities.Seat;
-import Entities.Wagon;
 import Factory.HibernateUtil;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import javax.persistence.Query;
 import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -59,10 +57,10 @@ public class SeatsDAOImpl implements SeatsDAO {
     }
 
     @Override
-    public List<Seat> getSeatsByWagon(Wagon wagon) throws SQLException {
+    public List<Seat> getSeatsByWagon(Plane wagon) throws SQLException {
        List seats= new ArrayList<Seat>();
        try (Session session=HibernateUtil.getSessionFactory().openSession()){
-           seats=session.createCriteria(Wagon.class).add(Restrictions.eq("wagon", wagon)).list();
+           seats=session.createCriteria(Plane.class).add(Restrictions.eq("wagon", wagon)).list();
        }
        catch (Exception e){
            e.printStackTrace();

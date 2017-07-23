@@ -1,8 +1,10 @@
 package DAOImpl;
 
-import DAOInterfaces.TypeWagons;
+import DAOInterfaces.AirportsDAO;
+import Entities.Airports;
 import Factory.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -12,14 +14,14 @@ import java.util.List;
 /**
  * Created by Николай on 16.07.2017.
  */
-public class TypeWagonsDAOImpl implements TypeWagons {
+public class AirportsDAOImpl implements AirportsDAO {
     @Override
-    public void addType(TypeWagons typeWagons) throws SQLException {
+    public void addAirport(Airports airports) throws SQLException {
         Session session=null;
         try {
             session= HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(typeWagons);
+            session.save(airports);
             session.getTransaction().commit();
         }
         catch (Exception e){
@@ -33,12 +35,12 @@ public class TypeWagonsDAOImpl implements TypeWagons {
     }
 
     @Override
-    public void updateType(TypeWagons typeWagons) throws SQLException {
+    public void updateAirport(Airports airports) throws SQLException {
         Session session=null;
         try {
             session= HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.update(typeWagons);
+            session.update(airports);
             session.getTransaction().commit();
         }
         catch (Exception e){
@@ -49,15 +51,16 @@ public class TypeWagonsDAOImpl implements TypeWagons {
                 session.close();
             }
         }
+
     }
 
     @Override
-    public TypeWagons getTypeByID(Long id) throws SQLException {
+    public Airports getAirportByID(int code) throws SQLException {
         Session session=null;
-        TypeWagons typeWagon=null;
+        Airports station=null;
         try {
             session=HibernateUtil.getSessionFactory().openSession();
-            typeWagon=(TypeWagons) session.load(TypeWagons.class, id);
+            station=(Airports) session.get(Airports.class, code);
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
@@ -67,16 +70,31 @@ public class TypeWagonsDAOImpl implements TypeWagons {
                 session.close();
             }
         }
-        return typeWagon;
+        return station;
     }
 
     @Override
-    public List<TypeWagons> getAllTypes() throws SQLException {
+    public List<Airports> getAirportByName(String nameAirport) throws SQLException {
+        List airports= new ArrayList<Airports>();
+        try (Session session=HibernateUtil.getSessionFactory().openSession()){
+            airports=session.createCriteria(Airports.class).add(Restrictions.eq("nameStation", nameAirport)).list();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return airports;
+
+
+    }
+
+    @Override
+    public List<Airports> getAllAirports() throws SQLException {
         Session session=null;
-        List typesList= new ArrayList<TypeWagons>();
+        List stations= new ArrayList<Airports>();
         try {
             session= HibernateUtil.getSessionFactory().openSession();
-            typesList= session.createCriteria(TypeWagons.class).list();
+            stations= session.createCriteria(Airports.class).list();
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
@@ -86,16 +104,17 @@ public class TypeWagonsDAOImpl implements TypeWagons {
                 session.close();
             }
         }
-        return typesList;
+
+        return stations;
     }
 
     @Override
-    public void deleteTypes(TypeWagons typeWagons) throws SQLException {
+    public void deleteAirport(Airports station) throws SQLException {
         Session session=null;
         try {
             session= HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(typeWagons);
+            session.delete(station);
             session.getTransaction().commit();
         }
         catch (Exception e){
@@ -106,5 +125,6 @@ public class TypeWagonsDAOImpl implements TypeWagons {
                 session.close();
             }
         }
+
     }
 }

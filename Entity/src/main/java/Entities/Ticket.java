@@ -18,13 +18,10 @@ public class Ticket {
     @JoinColumn(name = "passenger")
     private Passengers passenger;
 
-    @ManyToOne
-    @JoinColumn(name = "train_ID")
-    private Train train;
 
     @ManyToOne
-    @JoinColumn(name = "wag_ID")
-    private Wagon wagon;
+    @JoinColumn(name = "plain_ID")
+    private Plane plane;
 
     @OneToOne
     @JoinColumn(name = "seat_ID")
@@ -52,20 +49,12 @@ public class Ticket {
         this.passenger = passenger;
     }
 
-    public Train getTrain() {
-        return train;
+    public Plane getPlane() {
+        return plane;
     }
 
-    public void setTrain(Train train) {
-        this.train = train;
-    }
-
-    public Wagon getWagon() {
-        return wagon;
-    }
-
-    public void setWagon(Wagon wagon) {
-        this.wagon = wagon;
+    public void setPlane(Plane plane) {
+        this.plane = plane;
     }
 
     public Seat getSeat() {

@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        List<Passengers> passengers=Factory.getInstanse().getNamePassengersDAO().getAllPassengers();
-        System.out.println(passengers);
+
     }
 }

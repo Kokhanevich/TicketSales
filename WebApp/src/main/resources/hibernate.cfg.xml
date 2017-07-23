@@ -11,13 +11,13 @@
         <property name="connection.pool_size">5</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="show_sql">true</property>
-        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="hbm2ddl.auto">update</property>
         <property name="hibernate.connection.autocommit">false</property>
         <property name="current_session_context_class">thread</property>
 
         <mapping class="Entities.Passengers"/>
-        <mapping class="Entities.Stations"/>
-        <mapping class="Entities.Wagon"/>
+        <mapping class="Entities.Airports"/>
+        <mapping class="Entities.Plane"/>
         <mapping class="Entities.Train"/>
         <mapping class="Entities.Seat"/>
         <mapping class="Entities.Route"/>

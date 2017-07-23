@@ -1,7 +1,7 @@
 package DAOInterfaces;
 
 import Entities.Seat;
-import Entities.Wagon;
+import Entities.Plane;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -12,6 +12,6 @@ import java.util.List;
 public interface SeatsDAO {
     public void addSeat (Seat seat) throws SQLException;
     public  void updateSeat (Seat seat) throws SQLException;
-    public List<Seat> getSeatsByWagon (Wagon wagon) throws SQLException;
+    public List<Seat> getSeatsByWagon (Plane wagon) throws SQLException;
     public void deleteSeat(Seat seat) throws SQLException;
 }

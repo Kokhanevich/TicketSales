@@ -1,9 +1,8 @@
 package DAOImpl;
 
 import DAOInterfaces.TariffDAO;
-import Entities.Stations;
+import Entities.Airports;
 import Entities.Tariff;
-import Entities.TypeWagons;
 import Factory.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -58,7 +57,7 @@ public class TariffDAOImpl implements TariffDAO {
     }
 
     @Override
-    public List<Tariff> getTariffsByStation(List<Stations> fromStation, List<Stations> toStation) throws SQLException {
+    public List<Tariff> getTariffsByStation(List<Airports> fromStation, List<Airports> toStation) throws SQLException {
         Session session=null;
         List tariffs= new ArrayList<Tariff>();
         try {
@@ -78,15 +77,14 @@ public class TariffDAOImpl implements TariffDAO {
     }
 
     @Override
-    public Tariff getTariff(Stations fromStation, Stations toStation, TypeWagons type) throws SQLException {
+    public Tariff getTariff(Airports fromStation, Airports toStation) throws SQLException {
         Session session=null;
         Tariff tariff=null;
         try {
             session=HibernateUtil.getSessionFactory().openSession();
-            Query query =session.createQuery("FROM Tariff WHERE fromStation =:paramFrom AND toStation=:paramTo and typeWagon=:paramType");
+            Query query =session.createQuery("FROM Tariff WHERE fromStation =:paramFrom AND toStation=:paramTo");
             query.setParameter("paramFrom", fromStation);
             query.setParameter("paramTo", toStation);
-            query.setParameter("paramType", type);
             tariff=(Tariff) query.getSingleResult();
         }
         catch (Exception e){

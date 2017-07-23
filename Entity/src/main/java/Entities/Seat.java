@@ -18,8 +18,8 @@ public class Seat {
     private int number;
 
     @ManyToOne
-    @JoinColumn(name = "wagon")
-    private Wagon wagon;
+    @JoinColumn(name = "Plain")
+    private Plane plane;
 
     @OneToOne(mappedBy = "seat")
     private Ticket ticket;
@@ -54,11 +54,11 @@ public class Seat {
         this.ticket = ticket;
     }
 
-    public Wagon getWagon() {
-        return wagon;
+    public Plane getPlane() {
+        return plane;
     }
 
-    public void setWagon(Wagon wagon) {
-        this.wagon = wagon;
+    public void setPlane(Plane plane) {
+        this.plane = plane;
     }
 }
