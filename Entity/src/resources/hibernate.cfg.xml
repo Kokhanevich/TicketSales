@@ -20,7 +20,6 @@
         <mapping class="Entities.Plane"/>
         <mapping class="Entities.Seat"/>
         <mapping class="Entities.Route"/>
-        <mapping class="Entities.Tariff"/>
         <mapping class="Entities.Ticket"/>
 
     </session-factory>

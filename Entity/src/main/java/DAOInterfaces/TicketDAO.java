@@ -15,7 +15,7 @@ public interface TicketDAO {
     public void update(Ticket ticket) throws SQLException;
     public Ticket getTicketById(Long id) throws SQLException;
     public List<Ticket> getTicketsByPassenger(Passengers passenger) throws SQLException;
-    public List<Ticket> getTicketsByWagon(Plane wagon) throws SQLException;
+    public List<Ticket> getTicketsByPlane(Plane plane) throws SQLException;
     public List<Ticket> getAllTickets() throws SQLException;
     public void deleteTicket(Ticket ticket) throws SQLException;
 

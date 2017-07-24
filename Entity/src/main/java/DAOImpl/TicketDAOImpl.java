@@ -95,12 +95,12 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     @Override
-    public List<Ticket> getTicketsByWagon(Plane wagon) throws SQLException {
+    public List<Ticket> getTicketsByPlane(Plane plane) throws SQLException {
         Session session=null;
         List tickets=new ArrayList<Ticket>();
         try {
             session=HibernateUtil.getSessionFactory().openSession();
-            tickets=session.createCriteria(Ticket.class).add(Restrictions.eq("wagon",wagon)).list();
+            tickets=session.createCriteria(Ticket.class).add(Restrictions.eq("plane",plane)).list();
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);

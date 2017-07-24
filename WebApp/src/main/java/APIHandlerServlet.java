@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,15 +30,15 @@ public class APIHandlerServlet extends HttpServlet{
 
   private static Map<String, APIRequestHandler> apiRequestHandlers = new HashMap<>();
 
-//    static {
-//        Map<String, APIRequestHandler> map = new HashMap<>();
-//
-//        map.put("login", LoginServlet.getInstance());
+    static {
+        Map<String, APIRequestHandler> map = new HashMap<>();
+
+        map.put("registr", StationServlet.getInstance());
 //        map.put("registration", RegistrationServlet.getInstance());
 //        map.put("image", ImageServlet.getInstance());
 //        map.put("comment", CommentServlet.getInstance());
-//        apiRequestHandlers = Collections.unmodifiableMap(map);
-//    }
+        apiRequestHandlers = Collections.unmodifiableMap(map);
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

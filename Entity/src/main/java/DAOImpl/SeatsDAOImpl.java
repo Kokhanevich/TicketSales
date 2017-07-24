@@ -57,7 +57,7 @@ public class SeatsDAOImpl implements SeatsDAO {
     }
 
     @Override
-    public List<Seat> getSeatsByWagon(Plane wagon) throws SQLException {
+    public List<Seat> getSeatsByPlane(Plane wagon) throws SQLException {
        List seats= new ArrayList<Seat>();
        try (Session session=HibernateUtil.getSessionFactory().openSession()){
            seats=session.createCriteria(Plane.class).add(Restrictions.eq("wagon", wagon)).list();

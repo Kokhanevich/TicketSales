@@ -18,14 +18,9 @@
         <mapping class="Entities.Passengers"/>
         <mapping class="Entities.Airports"/>
         <mapping class="Entities.Plane"/>
-        <mapping class="Entities.Train"/>
         <mapping class="Entities.Seat"/>
         <mapping class="Entities.Route"/>
-        <mapping class="Entities.TypeWagons"/>
-        <mapping class="Entities.Tariff"/>
         <mapping class="Entities.Ticket"/>
-        <mapping class="Entities.Road"/>
-        <mapping class="Entities.Main_Route"/>
 
     </session-factory>
 </hibernate-configuration>

@@ -27,7 +27,7 @@ public class Passengers {
     @Column(name = "First_name", length = 40)
     private String firstName;
 
-    @OneToMany(mappedBy = "passenger")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "passenger")
     private List<Ticket> ticketList= new ArrayList<>();
 
 

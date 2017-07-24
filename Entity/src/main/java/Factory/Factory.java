@@ -9,10 +9,10 @@ import DAOInterfaces.*;
 public class Factory {
     private static PassengersDAO namePassengersDAO=null;
     private static SeatsDAO getSeatDAO=null;
-    private static AirportsDAO getStationDAO=null;
-    private static TariffDAO getTariffDAO=null;
+    private static AirportsDAO getAirportDAO=null;
+    private static RouteDAO getRouteDAO =null;
     private static TicketDAO getTicketDAO=null;
-    private static PlainDAO getTrainDAO=null;
+    private static PlainDAO getPlainDAO=null;
     private static Factory instanse=null;
      public static synchronized Factory getInstanse(){
          if (instanse==null){
@@ -35,18 +35,18 @@ public class Factory {
         return getSeatDAO;
     }
 
-    public AirportsDAO getStationDAO(){
-        if (getStationDAO==null){
-            getStationDAO=new AirportsDAOImpl();
+    public AirportsDAO getAirportDAO(){
+        if (getAirportDAO==null){
+            getAirportDAO=new AirportsDAOImpl();
         }
-        return getStationDAO;
+        return getAirportDAO;
     }
 
-    public TariffDAO gettariffDAO(){
-        if (getTariffDAO==null){
-            getTariffDAO= new TariffDAOImpl();
+    public RouteDAO getGetRouteDAO(){
+        if (getRouteDAO ==null){
+            getRouteDAO = new RouteDAOImpl();
         }
-        return getTariffDAO;
+        return getRouteDAO;
     }
 
     public TicketDAO getTicketDAO(){
@@ -56,11 +56,11 @@ public class Factory {
         return getTicketDAO;
     }
 
-    public PlainDAO getTrainDAO(){
-        if (getTrainDAO==null){
-            getTrainDAO=new PlainDAOImpl();
+    public PlainDAO getGetPlainDAO(){
+        if (getPlainDAO==null){
+            getPlainDAO=new PlainDAOImpl();
         }
-        return getTrainDAO;
+        return getPlainDAO;
     }
 
 

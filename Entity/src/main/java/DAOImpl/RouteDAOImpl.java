@@ -1,29 +1,26 @@
 package DAOImpl;
 
-import DAOInterfaces.TariffDAO;
+import DAOInterfaces.RouteDAO;
 import Entities.Airports;
-import Entities.Tariff;
+import Entities.Route;
 import Factory.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.Query;
 import javax.swing.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Николай on 16.07.2017.
  */
-public class TariffDAOImpl implements TariffDAO {
+public class RouteDAOImpl implements RouteDAO {
     @Override
-    public void addTariff(Tariff tariff) throws SQLException {
+    public void addRoute(Route route) throws SQLException {
         Session session=null;
         try {
             session= HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(tariff);
+            session.save(route);
             session.getTransaction().commit();
         }
         catch (Exception e){
@@ -37,12 +34,12 @@ public class TariffDAOImpl implements TariffDAO {
     }
 
     @Override
-    public void updateTariff(Tariff tariff) throws SQLException {
+    public void updateRoute(Route route) throws SQLException {
         Session session=null;
         try {
             session= HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.update(tariff);
+            session.update(route);
             session.getTransaction().commit();
         }
         catch (Exception e){
@@ -56,36 +53,17 @@ public class TariffDAOImpl implements TariffDAO {
 
     }
 
-    @Override
-    public List<Tariff> getTariffsByStation(List<Airports> fromStation, List<Airports> toStation) throws SQLException {
-        Session session=null;
-        List tariffs= new ArrayList<Tariff>();
-        try {
-            session= HibernateUtil.getSessionFactory().openSession();
-            tariffs=session.createCriteria(Tariff.class).add(Restrictions.eq("from",fromStation)).add(Restrictions.eq("to",toStation)).list();
-        }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
-        }
-        finally {
-            if (session !=null && session.isOpen()){
-                session.close();
-            }
-        }
-        return tariffs;
-
-    }
 
     @Override
-    public Tariff getTariff(Airports fromStation, Airports toStation) throws SQLException {
+    public Route getRoute(Airports fromAirport, Airports toAirport) throws SQLException {
         Session session=null;
-        Tariff tariff=null;
+        Route route =null;
         try {
             session=HibernateUtil.getSessionFactory().openSession();
-            Query query =session.createQuery("FROM Tariff WHERE fromStation =:paramFrom AND toStation=:paramTo");
-            query.setParameter("paramFrom", fromStation);
-            query.setParameter("paramTo", toStation);
-            tariff=(Tariff) query.getSingleResult();
+            Query query =session.createQuery("FROM Route WHERE fromAirport =:paramFrom AND toAirport=:paramTo");
+            query.setParameter("paramFrom", fromAirport);
+            query.setParameter("paramTo", toAirport);
+            route =(Route) query.getSingleResult();
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
@@ -95,17 +73,17 @@ public class TariffDAOImpl implements TariffDAO {
                 session.close();
             }
         }
-        return tariff;
+        return route;
 
     }
 
     @Override
-    public void deleteTariff(Tariff tariff) throws SQLException {
+    public void deleteRoute(Route route) throws SQLException {
         Session session=null;
         try {
             session= HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(tariff);
+            session.delete(route);
             session.getTransaction().commit();
         }
         catch (Exception e){

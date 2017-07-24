@@ -23,19 +23,14 @@ public class Airports {
     @Column(name = "name_airport")
     private String nameAirport;
 
-    @OneToMany(mappedBy = "fromAirport")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "fromAirport")
     private List<Route> firstAirport= new ArrayList<>();
 
-    @OneToMany(mappedBy = "toAirport")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "toAirport")
     private List<Route> lastStations= new ArrayList<>();
 
 
 
-    @OneToMany(mappedBy = "fromAirport")
-    private List<Tariff> tariffsFrom= new ArrayList<>();
-
-    @OneToMany(mappedBy = "toAirport")
-    private List<Tariff> tariffsTo=new ArrayList<>();
 
     public Airports(){nameAirport=null;}
 
@@ -75,19 +70,5 @@ public class Airports {
         this.lastStations = lastStations;
     }
 
-    public List<Tariff> getTariffsFrom() {
-        return tariffsFrom;
-    }
 
-    public void setTariffsFrom(List<Tariff> tariffsFrom) {
-        this.tariffsFrom = tariffsFrom;
-    }
-
-    public List<Tariff> getTariffsTo() {
-        return tariffsTo;
-    }
-
-    public void setTariffsTo(List<Tariff> tariffsTo) {
-        this.tariffsTo = tariffsTo;
-    }
 }

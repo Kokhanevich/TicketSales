@@ -1,3 +1,5 @@
+import Entities.Passengers;
+import Factory.Factory;
 import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +17,12 @@ public class StationServlet extends APIHandlerServlet.APIRequestHandler {
 
     @Override
     protected JSONStreamAware processRequest(HttpServletRequest request) throws Exception {
-        String from=request.getParameter("from");
+        String last=request.getParameter("last");
+        String first=request.getParameter("first");
+        Passengers passengers =new Passengers();
+        passengers.setLastName(last);
+        passengers.setFirstName(first);
+        Factory.getInstanse().getNamePassengersDAO().addNamePassengers(passengers);
 
         return null;
     }

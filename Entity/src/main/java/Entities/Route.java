@@ -13,30 +13,33 @@ public class Route {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    @Column(name = "route_ID")
-    private Long route_ID;
+    @Column(name = "ID_Route")
+    private Long idRoute;
 
-    @ManyToOne
-    @JoinColumn(name = "From_airport")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "from_airport")
     private Airports fromAirport;
 
-    @ManyToOne
-    @JoinColumn(name = "To_airport")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "to_airport")
     private Airports toAirport;
 
-   public Route(){}
+    @Column(name = "Prise")
+    private Double prise;
 
-    public Route(Airports fromAirport, Airports toAirport) {
-        this.fromAirport = fromAirport;
-        this.toAirport = toAirport;
+
+
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "route")
+    private List<Ticket> ticketList=new ArrayList<>();
+
+    public Route(){}
+
+    public Long getIdRoute() {
+        return idRoute;
     }
 
-    public Long getRoute_ID() {
-        return route_ID;
-    }
-
-    public void setRoute_ID(Long route_ID) {
-        this.route_ID = route_ID;
+    public void setIdRoute(Long idRoute) {
+        this.idRoute = idRoute;
     }
 
     public Airports getFromAirport() {
@@ -53,5 +56,21 @@ public class Route {
 
     public void setToAirport(Airports toAirport) {
         this.toAirport = toAirport;
+    }
+
+    public Double getPrise() {
+        return prise;
+    }
+
+    public void setPrise(Double prise) {
+        this.prise = prise;
+    }
+
+    public List<Ticket> getTicketList() {
+        return ticketList;
+    }
+
+    public void setTicketList(List<Ticket> ticketList) {
+        this.ticketList = ticketList;
     }
 }

@@ -14,22 +14,22 @@ public class Ticket {
     @Column(name = "ID_Ticket")
     private Long idTicket;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "passenger")
     private Passengers passenger;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "plain_ID")
     private Plane plane;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "seat_ID")
     private Seat seat;
 
-    @ManyToOne
-    @JoinColumn(name = "tariff")
-    private Tariff tariff;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Route")
+    private Route route;
 
     public Ticket(){}
 
@@ -65,11 +65,11 @@ public class Ticket {
         this.seat = seat;
     }
 
-    public Tariff getTariff() {
-        return tariff;
+    public Route getRoute() {
+        return route;
     }
 
-    public void setTariff(Tariff tariff) {
-        this.tariff = tariff;
+    public void setRoute(Route route) {
+        this.route = route;
     }
 }

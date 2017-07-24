@@ -10,7 +10,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Plane")
-//@Access(AccessType.FIELD)
 public class Plane {
 
     @Id
@@ -24,7 +23,7 @@ public class Plane {
 
 
 
-    @OneToMany(mappedBy = "plane")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "plane")
     private List<Seat> seats=new ArrayList<>();
 
     @OneToMany(mappedBy = "plane", fetch = FetchType.LAZY)

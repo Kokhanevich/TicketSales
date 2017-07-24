@@ -17,11 +17,11 @@ public class Seat {
     @Column(name = "number")
     private int number;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "Plain")
     private Plane plane;
 
-    @OneToOne(mappedBy = "seat")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "seat")
     private Ticket ticket;
 
     public Seat(){}
