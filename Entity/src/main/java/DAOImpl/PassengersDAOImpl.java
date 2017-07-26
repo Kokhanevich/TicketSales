@@ -27,7 +27,7 @@ public class PassengersDAOImpl implements PassengersDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -46,7 +46,7 @@ public class PassengersDAOImpl implements PassengersDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -67,7 +67,7 @@ public class PassengersDAOImpl implements PassengersDAO {
             namePassengers=(Passengers) query.getSingleResult();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -87,7 +87,7 @@ public class PassengersDAOImpl implements PassengersDAO {
             query.setParameter("paramName", firstName);
             namePassengers=(Passengers) query.getSingleResult();
         } catch (HibernateException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -105,7 +105,7 @@ public class PassengersDAOImpl implements PassengersDAO {
             passengersList= session.createCriteria(Passengers.class).list();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -126,7 +126,7 @@ public class PassengersDAOImpl implements PassengersDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){

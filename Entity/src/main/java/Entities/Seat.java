@@ -12,7 +12,7 @@ public class Seat {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "seat_ID")
-    private Long id;
+    private int id;
 
     @Column(name = "number")
     private int number;
@@ -30,11 +30,11 @@ public class Seat {
         this.number = number;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

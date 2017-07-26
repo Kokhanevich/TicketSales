@@ -14,7 +14,7 @@ public class Route {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "ID_Route")
-    private Long idRoute;
+    private int idRoute;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "from_airport")
@@ -27,18 +27,19 @@ public class Route {
     @Column(name = "Prise")
     private Double prise;
 
-
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "route")
+    private List<Plane> planes=new ArrayList<>();
 
     @OneToMany( fetch = FetchType.LAZY, mappedBy = "route")
     private List<Ticket> ticketList=new ArrayList<>();
 
     public Route(){}
 
-    public Long getIdRoute() {
+    public int getIdRoute() {
         return idRoute;
     }
 
-    public void setIdRoute(Long idRoute) {
+    public void setIdRoute(int idRoute) {
         this.idRoute = idRoute;
     }
 
@@ -58,6 +59,14 @@ public class Route {
         this.toAirport = toAirport;
     }
 
+    public List<Plane> getPlanes() {
+        return planes;
+    }
+
+    public void setPlanes(List<Plane> planes) {
+        this.planes = planes;
+    }
+
     public Double getPrise() {
         return prise;
     }
@@ -72,5 +81,14 @@ public class Route {
 
     public void setTicketList(List<Ticket> ticketList) {
         this.ticketList = ticketList;
+    }
+
+    @Override
+    public String toString() {
+        return "Маршрут" +
+                ": " + fromAirport +
+                " - " + toAirport +
+                "; цена: " + prise +
+                " $";
     }
 }

@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style>
+
+        body{
+            background: url("Images/fon.jpg");}
+    </style>
     <script src="registr.js" defer></script>
     <script src="Assets/js/jquery-1.11.1.js"></script>
-    <!-- BOOTSTRAP SCRIPTS  -->
-    <script src="Assets/js/bootstrap.js"></script>
-    <!-- SCROLLING SCRIPTS PLUGIN  -->
-    <script src="Assets/js/jquery.easing.min.js"></script>
-    <!-- CUSTOM SCRIPTS   -->
-    <script src="Assets/js/custom.js"></script>
+<!-- BOOTSTRAP SCRIPTS  -->
+<script src="Assets/js/bootstrap.js"></script>
+<!-- SCROLLING SCRIPTS PLUGIN  -->
+<script src="Assets/js/jquery.easing.min.js"></script>
+<!-- CUSTOM SCRIPTS   -->
+<script src="Assets/js/custom.js"></script>
+
 </head>
 <body>
+
 <h1>Онлайн заказ авиабилетов</h1>
 
 
-<p>Откуда: <input type="text" id="n1"></p>
-<p>Куда: <input type="text" id="n2"></p>
-<button onclick="reg()">Найти</button>
+<p>Откуда: <input type="text" id="от"></p>
+<p>Куда: <input type="text" id="куда"></p>
+<button onclick="search_plane()">Найти</button>
 <hr>
-<p id="out">Результат</p>
+<div id="out" onclick="chosePlane()"></div>
 </body>
 </html>

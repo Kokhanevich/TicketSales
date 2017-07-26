@@ -12,6 +12,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "Airports")
+//@Access(AccessType.FIELD)
 public class Airports {
 
     @Id
@@ -27,7 +28,7 @@ public class Airports {
     private List<Route> firstAirport= new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "toAirport")
-    private List<Route> lastStations= new ArrayList<>();
+    private List<Route> lastAirport= new ArrayList<>();
 
 
 
@@ -62,13 +63,16 @@ public class Airports {
         this.firstAirport = firstAirport;
     }
 
-    public List<Route> getLastStations() {
-        return lastStations;
+    public List<Route> getLastAirport() {
+        return lastAirport;
     }
 
-    public void setLastStations(List<Route> lastStations) {
-        this.lastStations = lastStations;
+    public void setLastAirport(List<Route> lastAirport) {
+        this.lastAirport = lastAirport;
     }
 
-
+    @Override
+    public String toString() {
+        return nameAirport;
+    }
 }

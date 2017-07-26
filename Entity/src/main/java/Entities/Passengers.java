@@ -19,7 +19,7 @@ public class Passengers {
     @GeneratedValue (generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "ID")
-    private long userId;
+    private int userId;
 
     @Column(name = "Last_name", length = 40)
     private String lastName;
@@ -39,11 +39,11 @@ public class Passengers {
     }
 
 
-    public long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

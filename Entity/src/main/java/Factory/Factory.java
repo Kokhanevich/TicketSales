@@ -42,7 +42,7 @@ public class Factory {
         return getAirportDAO;
     }
 
-    public RouteDAO getGetRouteDAO(){
+    public RouteDAO getRouteDAO(){
         if (getRouteDAO ==null){
             getRouteDAO = new RouteDAOImpl();
         }

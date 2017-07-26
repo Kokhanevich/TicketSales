@@ -12,7 +12,7 @@ public class Ticket {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "ID_Ticket")
-    private Long idTicket;
+    private int idTicket;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "passenger")
@@ -33,11 +33,11 @@ public class Ticket {
 
     public Ticket(){}
 
-    public Long getIdTicket() {
+    public int getIdTicket() {
         return idTicket;
     }
 
-    public void setIdTicket(Long idTicket) {
+    public void setIdTicket(int idTicket) {
         this.idTicket = idTicket;
     }
 

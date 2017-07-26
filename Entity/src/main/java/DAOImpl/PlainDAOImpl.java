@@ -3,6 +3,7 @@ package DAOImpl;
 import DAOInterfaces.PlainDAO;
 import Entities.Airports;
 import Entities.Plane;
+import Entities.Route;
 import Factory.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -26,7 +27,7 @@ public class PlainDAOImpl implements PlainDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -45,7 +46,7 @@ public class PlainDAOImpl implements PlainDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -55,15 +56,34 @@ public class PlainDAOImpl implements PlainDAO {
     }
 
     @Override
-    public List<Plane> getPlainsByRoute(Airports fromAirport, Airports toAirport) throws SQLException {
+    public Plane getPlaneById(int id) {
+        Session session=null;
+        Plane plane=null;
+        try {
+            session=HibernateUtil.getSessionFactory().openSession();
+            plane=(Plane) session.get(Plane.class, id);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            if (session !=null && session.isOpen()){
+                session.close();
+            }
+        }
+        return plane;
+    }
+
+    @Override
+    public List<Plane> getPlainsByRoute(Route route) throws SQLException {
         Session session=null;
         List planes= new ArrayList<Plane>();
         try {
             session= HibernateUtil.getSessionFactory().openSession();
-            planes=session.createCriteria(Plane.class).add(Restrictions.eq("from",fromAirport)).add(Restrictions.eq("to",toAirport)).list();
+            planes=session.createCriteria(Plane.class).add(Restrictions.eq("route",route)).list();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -83,7 +103,7 @@ public class PlainDAOImpl implements PlainDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){

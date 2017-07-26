@@ -27,7 +27,7 @@ public class SeatsDAOImpl implements SeatsDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -46,7 +46,7 @@ public class SeatsDAOImpl implements SeatsDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -57,10 +57,10 @@ public class SeatsDAOImpl implements SeatsDAO {
     }
 
     @Override
-    public List<Seat> getSeatsByPlane(Plane wagon) throws SQLException {
+    public List<Seat> getSeatsByPlane(Plane plane) throws SQLException {
        List seats= new ArrayList<Seat>();
        try (Session session=HibernateUtil.getSessionFactory().openSession()){
-           seats=session.createCriteria(Plane.class).add(Restrictions.eq("wagon", wagon)).list();
+           seats=session.createCriteria(Plane.class).add(Restrictions.eq("plane", plane)).list();
        }
        catch (Exception e){
            e.printStackTrace();
@@ -78,7 +78,7 @@ public class SeatsDAOImpl implements SeatsDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){

@@ -25,7 +25,7 @@ public class AirportsDAOImpl implements AirportsDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -44,7 +44,7 @@ public class AirportsDAOImpl implements AirportsDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -63,7 +63,7 @@ public class AirportsDAOImpl implements AirportsDAO {
             station=(Airports) session.get(Airports.class, code);
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -97,7 +97,7 @@ public class AirportsDAOImpl implements AirportsDAO {
             stations= session.createCriteria(Airports.class).list();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -118,7 +118,7 @@ public class AirportsDAOImpl implements AirportsDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){

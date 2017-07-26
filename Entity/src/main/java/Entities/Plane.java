@@ -16,26 +16,29 @@ public class Plane {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "plain_ID")
-    private long plainId;
+    private int plainId;
 
     @Column(name = "Name")
     private String name;
 
-
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Route")
+    private Route route;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "plane")
-    private List<Seat> seats=new ArrayList<>();
+    private List<Seat> seats = new ArrayList<>();
 
     @OneToMany(mappedBy = "plane", fetch = FetchType.LAZY)
-    private Set<Ticket> tickets= new HashSet<>();
+    private Set<Ticket> tickets = new HashSet<>();
 
-    public Plane(){}
+    public Plane() {
+    }
 
-    public long getPlainId() {
+    public int getPlainId() {
         return plainId;
     }
 
-    public void setPlainId(long plainId) {
+    public void setPlainId(int plainId) {
         this.plainId = plainId;
     }
 
@@ -45,6 +48,14 @@ public class Plane {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
     }
 
     public List<Seat> getSeats() {
@@ -61,6 +72,15 @@ public class Plane {
 
     public void setTickets(Set<Ticket> tickets) {
         this.tickets = tickets;
+    }
+
+    @Override
+    public String toString() {
+        return "Plane{" +
+                "plainId=" + plainId +
+                ", name='" + name + '\'' +
+                ", route=" + route +
+                '}';
     }
 }
 

@@ -27,7 +27,7 @@ public class TicketDAOImpl implements TicketDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -46,7 +46,7 @@ public class TicketDAOImpl implements TicketDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -65,7 +65,7 @@ public class TicketDAOImpl implements TicketDAO {
             ticket=(Ticket)session.load(Ticket.class, id);
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -84,7 +84,7 @@ public class TicketDAOImpl implements TicketDAO {
             tickets=session.createCriteria(Ticket.class).add(Restrictions.eq("passanger",passenger)).list();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session!=null && session.isOpen()){
@@ -103,7 +103,7 @@ public class TicketDAOImpl implements TicketDAO {
             tickets=session.createCriteria(Ticket.class).add(Restrictions.eq("plane",plane)).list();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session!=null && session.isOpen()){
@@ -122,7 +122,7 @@ public class TicketDAOImpl implements TicketDAO {
             ticketsList= session.createCriteria(Ticket.class).list();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){
@@ -142,7 +142,7 @@ public class TicketDAOImpl implements TicketDAO {
             session.getTransaction().commit();
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage(),"joihh io", JOptionPane.OK_OPTION);
+            e.printStackTrace();
         }
         finally {
             if (session !=null && session.isOpen()){

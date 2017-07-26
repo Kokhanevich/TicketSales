@@ -12,6 +12,6 @@ import java.util.List;
 public interface SeatsDAO {
     public void addSeat (Seat seat) throws SQLException;
     public  void updateSeat (Seat seat) throws SQLException;
-    public List<Seat> getSeatsByPlane (Plane wagon) throws SQLException;
+    public List<Seat> getSeatsByPlane (Plane plane) throws SQLException;
     public void deleteSeat(Seat seat) throws SQLException;
 }
