@@ -1,13 +1,12 @@
-package DAOImpl;
+package daoImpl;
 
-import DAOInterfaces.PassengersDAO;
-import Entities.Passengers;
-import Factory.HibernateUtil;
+import daoInterfaces.PassengersDAO;
+import entities.Passengers;
+import factory.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
-import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;

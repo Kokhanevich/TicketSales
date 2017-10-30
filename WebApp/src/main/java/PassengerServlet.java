@@ -1,5 +1,5 @@
-import Entities.Passengers;
-import Factory.Factory;
+import entities.Passengers;
+import factory.Factory;
 import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;

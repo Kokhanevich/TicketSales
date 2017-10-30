@@ -16,12 +16,12 @@
         <property name="current_session_context_class">thread</property>
         <property name="hibernate.enable_lazy_load_no_trans">true</property>
 
-        <mapping class="Entities.Passengers"/>
-        <mapping class="Entities.Airports"/>
-        <mapping class="Entities.Plane"/>
-        <mapping class="Entities.Seat"/>
-        <mapping class="Entities.Route"/>
-        <mapping class="Entities.Ticket"/>
+        <mapping class="entities.Passengers"/>
+        <mapping class="entities.Airports"/>
+        <mapping class="entities.Plane"/>
+        <mapping class="entities.Seat"/>
+        <mapping class="entities.Route"/>
+        <mapping class="entities.Ticket"/>
 
     </session-factory>
 </hibernate-configuration>

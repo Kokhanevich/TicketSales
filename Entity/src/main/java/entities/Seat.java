@@ -1,4 +1,4 @@
-package Entities;
+package entities;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -12,7 +12,7 @@ public class Seat {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "seat_ID")
-    private int id;
+    private int seatId;
 
     @Column(name = "number")
     private int number;
@@ -30,12 +30,12 @@ public class Seat {
         this.number = number;
     }
 
-    public int getId() {
-        return id;
+    public int getSeatId() {
+        return seatId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSeatId(int id) {
+        this.seatId = id;
     }
 
     public int getNumber() {

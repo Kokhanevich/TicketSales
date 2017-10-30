@@ -1,12 +1,12 @@
-package DAOImpl;
+package daoImpl;
 
-import DAOInterfaces.AirportsDAO;
-import Entities.Airports;
-import Factory.HibernateUtil;
+import daoInterfaces.PlainDAO;
+import entities.Plane;
+import entities.Route;
+import factory.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +14,14 @@ import java.util.List;
 /**
  * Created by Николай on 16.07.2017.
  */
-public class AirportsDAOImpl implements AirportsDAO {
+public class PlainDAOImpl implements PlainDAO {
     @Override
-    public void addAirport(Airports airports) throws SQLException {
+    public void addPlain(Plane plane) throws SQLException {
         Session session=null;
         try {
             session= HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.save(airports);
+            session.save(plane);
             session.getTransaction().commit();
         }
         catch (Exception e){
@@ -35,12 +35,12 @@ public class AirportsDAOImpl implements AirportsDAO {
     }
 
     @Override
-    public void updateAirport(Airports airports) throws SQLException {
+    public void updatePlain(Plane plane) throws SQLException {
         Session session=null;
         try {
             session= HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.update(airports);
+            session.update(plane);
             session.getTransaction().commit();
         }
         catch (Exception e){
@@ -51,16 +51,15 @@ public class AirportsDAOImpl implements AirportsDAO {
                 session.close();
             }
         }
-
     }
 
     @Override
-    public Airports getAirportByID(int code) throws SQLException {
+    public Plane getPlaneById(int id) {
         Session session=null;
-        Airports station=null;
+        Plane plane=null;
         try {
             session=HibernateUtil.getSessionFactory().openSession();
-            station=(Airports) session.get(Airports.class, code);
+            plane=(Plane) session.get(Plane.class, id);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -70,31 +69,16 @@ public class AirportsDAOImpl implements AirportsDAO {
                 session.close();
             }
         }
-        return station;
+        return plane;
     }
 
     @Override
-    public List<Airports> getAirportByName(String nameAirport) throws SQLException {
-        List airports= new ArrayList<Airports>();
-        try (Session session=HibernateUtil.getSessionFactory().openSession()){
-            airports=session.createCriteria(Airports.class).add(Restrictions.eq("nameStation", nameAirport)).list();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-
-        return airports;
-
-
-    }
-
-    @Override
-    public List<Airports> getAllAirports() throws SQLException {
+    public List<Plane> getPlainsByRoute(Route route) throws SQLException {
         Session session=null;
-        List stations= new ArrayList<Airports>();
+        List planes= new ArrayList<Plane>();
         try {
             session= HibernateUtil.getSessionFactory().openSession();
-            stations= session.createCriteria(Airports.class).list();
+            planes=session.createCriteria(Plane.class).add(Restrictions.eq("route",route)).list();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -104,17 +88,16 @@ public class AirportsDAOImpl implements AirportsDAO {
                 session.close();
             }
         }
-
-        return stations;
+        return planes;
     }
 
     @Override
-    public void deleteAirport(Airports station) throws SQLException {
+    public void deletePlain(Plane plane) throws SQLException {
         Session session=null;
         try {
             session= HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(station);
+            session.delete(plane);
             session.getTransaction().commit();
         }
         catch (Exception e){

@@ -1,7 +1,7 @@
-package DAOInterfaces;
+package daoInterfaces;
 
 
-import Entities.Passengers;
+import entities.Passengers;
 
 import java.sql.SQLException;
 import java.util.List;

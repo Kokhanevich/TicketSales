@@ -1,8 +1,7 @@
-package DAOInterfaces;
+package daoInterfaces;
 
-import Entities.Airports;
-import Entities.Plane;
-import Entities.Route;
+import entities.Plane;
+import entities.Route;
 
 import java.sql.SQLException;
 import java.util.List;

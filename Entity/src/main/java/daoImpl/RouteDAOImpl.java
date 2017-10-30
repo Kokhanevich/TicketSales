@@ -1,17 +1,13 @@
-package DAOImpl;
+package daoImpl;
 
-import DAOInterfaces.RouteDAO;
-import Entities.Airports;
-import Entities.Route;
-import Factory.HibernateUtil;
+import daoInterfaces.RouteDAO;
+import entities.Airports;
+import entities.Route;
+import factory.HibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.Query;
-import javax.swing.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Николай on 16.07.2017.

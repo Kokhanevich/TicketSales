@@ -8,9 +8,16 @@
          data: {requestType: "searchPlane", from: from, to: to},
          success: function (data) {
              console.log(data);
-            document.getElementById("out").innerHTML=data;
-             
-         }
+              if(data.length==0){
+                  document.getElementById("out").innerHTML="Нет таких маршрутов";
+              }
+             else {
+
+                      document.getElementById("out").innerHTML=data;
+
+                  }
+              }
+
      });
 
 }
@@ -27,20 +34,7 @@ function chosePlane() {
             document.location.href = 'Seat.html';
             document.getElementById("seat").innerHTML=data;
 
-
-
         }
     });
 }
 
- // function registerPass() {
- //     var last=document.getElementById("plane").value;
- //     var first=document.getElementById("plane").value;
- //     $.ajax({
- //         type: "POST",
- //         url: "/TicketSales",
- //         dataType: "json",
- //         data: {requestType: "register",last: last,first:first},
- //
- //     });
- // }

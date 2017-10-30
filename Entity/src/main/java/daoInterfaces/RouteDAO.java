@@ -1,11 +1,9 @@
-package DAOInterfaces;
+package daoInterfaces;
 
-import Entities.Airports;
-import Entities.Route;
+import entities.Route;
 
 
 import java.sql.SQLException;
-import java.util.List;
 
 public interface RouteDAO {
     public void addRoute (Route route) throws SQLException;

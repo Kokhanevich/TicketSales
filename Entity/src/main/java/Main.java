@@ -1,11 +1,8 @@
-import Entities.Airports;
-import Entities.Passengers;
-import Entities.Plane;
-import Entities.Route;
-import Factory.Factory;
+import entities.Plane;
+import entities.Route;
+import factory.Factory;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {

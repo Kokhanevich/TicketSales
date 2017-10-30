@@ -1,4 +1,4 @@
-package Entities;
+package entities;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -85,10 +85,10 @@ public class Route {
 
     @Override
     public String toString() {
-        return "Маршрут" +
+        return "Route" +
                 ": " + fromAirport +
                 " - " + toAirport +
-                "; цена: " + prise +
+                "; prise: " + prise +
                 " $";
     }
 }

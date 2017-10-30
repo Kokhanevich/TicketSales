@@ -1,9 +1,7 @@
-import Entities.Plane;
-import Entities.Seat;
-import Factory.Factory;
-import jdk.nashorn.internal.parser.JSONParser;
+import entities.Plane;
+import entities.Seat;
+import factory.Factory;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;

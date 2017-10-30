@@ -1,7 +1,7 @@
-package DAOInterfaces;
+package daoInterfaces;
 
-import Entities.Seat;
-import Entities.Plane;
+import entities.Seat;
+import entities.Plane;
 
 import java.sql.SQLException;
 import java.util.List;

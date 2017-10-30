@@ -1,4 +1,4 @@
-package Entities;
+package entities;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -12,7 +12,7 @@ public class Ticket {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "ID_Ticket")
-    private int idTicket;
+    private int ticketId;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "passenger")
@@ -33,12 +33,12 @@ public class Ticket {
 
     public Ticket(){}
 
-    public int getIdTicket() {
-        return idTicket;
+    public int getTicketId() {
+        return ticketId;
     }
 
-    public void setIdTicket(int idTicket) {
-        this.idTicket = idTicket;
+    public void setTicketId(int idTicket) {
+        this.ticketId = idTicket;
     }
 
     public Passengers getPassenger() {

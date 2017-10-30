@@ -1,7 +1,7 @@
-package Factory;
+package factory;
 
-import DAOImpl.*;
-import DAOInterfaces.*;
+import daoImpl.*;
+import daoInterfaces.*;
 
 /**
  * Created by Николай on 04.07.2017.

@@ -1,14 +1,13 @@
-package DAOImpl;
+package daoImpl;
 
-import DAOInterfaces.TicketDAO;
-import Entities.Passengers;
-import Entities.Ticket;
-import Entities.Plane;
-import Factory.HibernateUtil;
+import daoInterfaces.TicketDAO;
+import entities.Passengers;
+import entities.Ticket;
+import entities.Plane;
+import factory.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
